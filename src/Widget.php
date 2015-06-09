@@ -12,13 +12,13 @@ use yii\helpers\Html;
  * Select2 widget
  * Widget wrapper for {@link http://ivaynberg.github.io/select2/ Select2}.
  * @var \yii\base\Widget $this Widget
- * 
+ *
  * Usage:
  * ~~~
  * echo $form->field($model, 'field')->widget(Select2::className(), [
  *     'options' => [
  *         'multiple' => true,
- * 		   'placeholder' => 'Choose item'
+ *         'placeholder' => 'Choose item'
  *     ],
  *     'settings' => [
  *         'width' => '100%',
@@ -41,20 +41,20 @@ class Widget extends InputWidget
     /** Name of inline JavaScript package that is registered by the widget */
     const INLINE_JS_KEY = 'vova07/select2/';
 
-	/**
-	 * @var array {@link http://ivaynberg.github.io/select2/#documentation Select2} settings
-	 */
-	public $settings = [];
+    /**
+     * @var array {@link http://ivaynberg.github.io/select2/#documentation Select2} settings
+     */
+    public $settings = [];
 
-	/**
-	 * @var array Select items
-	 */
-	public $items = [];
+    /**
+     * @var array Select items
+     */
+    public $items = [];
 
-	/**
-	 * @var string Plugin language. If `null`, [[\yii\base\Application::language|app language]] will be used.
-	 */
-	public $language;
+    /**
+     * @var string Plugin language. If `null`, [[\yii\base\Application::language|app language]] will be used.
+     */
+    public $language;
 
     /**
      * @var boolean Whatever to use bootstrap CSS or not
@@ -78,43 +78,42 @@ class Widget extends InputWidget
      */
     public $events = [];
 
-	/**
-	 * @inheritdoc
-	 */
-	public function init()
-	{
-		parent::init();
+    /**
+     * @inheritdoc
+     */
+    public function init()
+    {
+        parent::init();
 
-		// Set language
-		if ($this->language === null && ($language = Yii::$app->language) !== 'en-US') {
-			$this->language = substr($language, 0, 2);
-		}
-	}
+        // Set language
+        if ($this->language === null && ($language = Yii::$app->language) !== 'en-US') {
+            $this->language = substr($language, 0, 2);
+        }
+    }
 
-	/**
-	 * @inheritdoc
-	 */
-	public function run()
-	{
-		$this->registerClientScript();
-		if ($this->hasModel()) {
-			return Html::activeDropDownList($this->model, $this->attribute, $this->items, $this->options);
-		} else {
-			return Html::dropDownList($this->name, $this->value, $this->items, $this->options);
-		}
-  	}
+    /**
+     * @inheritdoc
+     */
+    public function run()
+    {
+        $this->registerClientScript();
+        if ($this->hasModel()) {
+            return Html::activeDropDownList($this->model, $this->attribute, $this->items, $this->options);
+        } else {
+            return Html::dropDownList($this->name, $this->value, $this->items, $this->options);
+        }
+    }
 
-  	/**
-	 * Register widget asset.
-	 */
-	public function registerClientScript()
-	{
-		$view = $this->getView();
-		$selector = '#' . $this->options['id'];
-		$settings = Json::encode($this->settings);
+    /**
+     * Register widget asset.
+     */
+    public function registerClientScript()
+    {
+        $view = $this->getView();
+        $selector = '#' . $this->options['id'];
 
-		// Register asset
-		$asset = Asset::register($view);
+        // Register asset
+        $asset = Asset::register($view);
 
         if ($this->language !== null) {
             $asset->language = $this->language;
@@ -122,16 +121,18 @@ class Widget extends InputWidget
 
         if ($this->bootstrap === true) {
             BootstrapAsset::register($view);
+            $this->settings['theme'] = 'bootstrap';
         } else {
             Select2Asset::register($view);
         }
 
-		// Init widget
-		$view->registerJs("jQuery('$selector').select2($settings);", $view::POS_READY, self::INLINE_JS_KEY . $this->options['id']);
+        // Init widget
+        $settings = Json::encode($this->settings);
+        $view->registerJs("jQuery('$selector').select2($settings);", $view::POS_READY, self::INLINE_JS_KEY . $this->options['id']);
 
         // Register events
         $this->registerEvents();
-	}
+    }
 
     /**
      * Register plugin' events.

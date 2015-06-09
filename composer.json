@@ -28,7 +28,8 @@
     },
     "require": {
         "yiisoft/yii2": "*",
-        "bower-asset/select2": "3.*"
+        "bower-asset/select2": "4.*",
+        "bower-asset/select2-bootstrap-theme": "*"
     },
     "require-dev": {
         "phpunit/phpunit": "4.*",

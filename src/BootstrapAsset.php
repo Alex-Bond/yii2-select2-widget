@@ -12,7 +12,7 @@ class BootstrapAsset extends AssetBundle
     /**
      * @inheritdoc
      */
-    public $sourcePath = '@bower/select2';
+    public $sourcePath = '@bower/select2-bootstrap-theme/dist';
     /**
      * @inheritdoc
      */
