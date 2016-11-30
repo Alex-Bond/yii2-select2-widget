@@ -1,6 +1,6 @@
 <?php
 
-namespace vova07\select2;
+namespace alexBond\select2;
 
 use yii\web\AssetBundle;
 
@@ -25,6 +25,6 @@ class Select2Asset extends AssetBundle
      * @inheritdoc
      */
     public $depends = [
-        \vova07\select2\Asset::class
+        \alexBond\select2\Asset::class
     ];
 }

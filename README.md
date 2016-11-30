@@ -16,13 +16,13 @@ The preferred way to install this extension is through [composer](http://getcomp
 Either run
 
 ```
-php composer.phar require --prefer-dist vova07/yii2-select2-widget "*"
+php composer.phar require --prefer-dist alex-bond/yii2-select2-widget "*"
 ```
 
 or add
 
 ```
-"vova07/yii2-select2-widget": "*"
+"alex-bond/yii2-select2-widget": "*"
 ```
 
 to the require section of your `composer.json` file.
@@ -32,7 +32,7 @@ to the require section of your `composer.json` file.
 Once the extension is installed, simply use it in your code by:
 
 ```php
-use vova07\select2\Widget;
+use alexBond\select2\Widget;
 
 echo $form->field($model, 'field')->widget(Widget::className(), [
     'options' => [

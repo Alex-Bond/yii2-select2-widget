@@ -1,6 +1,6 @@
 <?php
 
-namespace vova07\select2;
+namespace alexBond\select2;
 
 use Yii;
 use yii\web\JsExpression;
@@ -128,7 +128,8 @@ class Widget extends InputWidget
 
         // Init widget
         $settings = Json::encode($this->settings);
-        $view->registerJs("jQuery('$selector').select2($settings);", $view::POS_READY, self::INLINE_JS_KEY . $this->options['id']);
+        $view->registerJs("jQuery('$selector').select2($settings);", $view::POS_READY,
+            self::INLINE_JS_KEY . $this->options['id']);
 
         // Register events
         $this->registerEvents();

@@ -1,6 +1,6 @@
 <?php
 
-namespace vova07\select2;
+namespace alexBond\select2;
 
 use yii\web\AssetBundle;
 
