@@ -25,6 +25,6 @@ class Select2Asset extends AssetBundle
      * @inheritdoc
      */
     public $depends = [
-        'vova07\select2\Asset'
+        \vova07\select2\Asset::class
     ];
 }

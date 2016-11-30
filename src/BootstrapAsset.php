@@ -24,7 +24,7 @@ class BootstrapAsset extends AssetBundle
      * @inheritdoc
      */
     public $depends = [
-        'vova07\select2\Asset',
-        'yii\bootstrap\BootstrapAsset'
+        \vova07\select2\Asset::class,
+        \yii\bootstrap\BootstrapAsset::class
     ];
 }
